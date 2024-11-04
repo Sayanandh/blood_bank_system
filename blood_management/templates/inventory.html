@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Inventory - Blood Bank Management System</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bm.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">LifeFlow</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'register_donor' %}">Become a Donor</a></li>
+                <li><a href="{% url 'blood_inventory' %}">Blood Inventory</a></li>
+                <li><a href="{% url 'hospital_login' %}">Hospital Login</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <h1 class="invcard h2">Blood Inventory Management</h1>
+        <div class="invcard-container">
+            {% for inventory in inventories %}
+            <div class="invcard">
+                <h2>{{ inventory.blood_type }}</h2>
+                <div class="invquantity {% if inventory.quantity <= 20 %}danger{% else %}good{% endif %}">{{ inventory.quantity }} units</div>
+                <p>
+                    <span><i class="fas fa-minus"></i> Last updated: {{ inventory.updated_at|date:"Y-m-d" }}</span>
+                    <span class="add"><i class="fas fa-plus"></i></span>
+                </p>
+            </div>
+            {% empty %}
+            <p>No inventory available.</p>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

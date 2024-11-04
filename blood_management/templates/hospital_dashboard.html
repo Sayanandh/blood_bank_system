@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Login - Blood Bank Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">LifeFlow</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'register_donor' %}">Become a Donor</a></li>
+                <li><a href="{% url 'blood_inventory' %}">Blood Inventory</a></li>
+                <li><a href="{% url 'hospital_login' %}">Hospital Login</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="form-container">
+        <form action="{% url 'hospital_login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-icon">🏥</div>
+            <h1>Hospital Login</h1>
+            <label for="hospital-id">Hospital ID:</label>
+            <input type="text" id="hospital-id" name="hospital_id" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

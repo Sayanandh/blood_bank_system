@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlow - Blood Donation</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">  <!-- Ensure the path to your CSS file is correct -->
+</head>
+<body>
+    <header>
+        <div class="logo">LifeFlow</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>  <!-- Use Django URL tag -->
+                <li><a href="{% url 'register_donor' %}">Become a Donor</a></li>  <!-- Updated to use Django URL -->
+                <li><a href="{% url 'blood_inventory' %}">Blood Inventory</a></li>  <!-- Updated to use Django URL -->
+                <li><a href="{% url 'hospital_login' %}">Hospital Login</a></li>  <!-- Updated to use Django URL -->
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1><b>Save Lives Through <br><span>Blood Donation</span></b></h1>
+        <p>Join our mission to ensure every patient has access to safe, life-saving blood when they need it most.</p>
+        <a href="{% url 'register_donor' %}" class="button">Become a Donor →</a>  <!-- Updated to use Django URL -->
+    </section>
+    <section class="info-cards">
+        <div class="card">
+            <div class="icon">❤️</div>
+            <h3>For Donors</h3>
+            <p>Register as a blood donor and help save lives in your community.</p>
+            <a href="{% url 'register_donor' %}">Register Now →</a>  <!-- Updated to use Django URL -->
+        </div>
+        <div class="card">
+            <div class="icon">🏥</div>
+            <h3>For Hospitals</h3>
+            <p>Access our blood inventory system and manage blood requests.</p>
+            <a href="{% url 'hospital_login' %}">Hospital Login →</a>  <!-- Updated to use Django URL -->
+        </div>
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Blood Availability</h3>
+            <p>Check real-time blood inventory levels and availability.</p>
+            <a href="{% url 'blood_inventory' %}">Check Inventory →</a>  <!-- Updated to use Django URL -->
+        </div>
+    </section>
+</body>
+</html>
